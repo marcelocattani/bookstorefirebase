@@ -23,6 +23,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+import { Truncar } from './pipes/myPipes.pipe'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    Page404Component
+    Page404Component,
+    Truncar    
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule   
   ],
   providers: [AngularFireAuth,
               AngularFirestore],

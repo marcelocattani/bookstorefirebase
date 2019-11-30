@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   public email : string = "";
   public pass : string = "";
+  public isError : boolean = false;
 
   constructor(public afAuth : AngularFireAuth, private router : Router, private authService : AuthService) { }
 
@@ -24,6 +25,10 @@ export class LoginComponent implements OnInit {
       this.redirectListBook();
     }).catch ((err) => {
       console.log("error de logueo", err)
+      this.isError = true;
+      setTimeout(() =>{
+        this.isError = false       
+      }, 4000)
     }); 
   }
 
