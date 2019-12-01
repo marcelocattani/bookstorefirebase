@@ -1,0 +1,55 @@
+<div class="container">
+    <section class="row mt-5">
+        <div class="col">
+                
+            <form #formUserRol  ="ngForm" (ngSubmit) ="onSave(formUserRol)">
+
+                    <input type="text" name="userId" [(ngModel)]="this.selectedUser">
+                    <input type="text" name="name" [(ngModel)] = "this.selectedName">
+                    <input type="text" name="email" [(ngModel)] = "this.selectedEmail">
+                    
+                    <table class="table table-hover">
+                        <thead>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Acciones</th>
+                        </thead>
+                            <tbody>
+                            <tr *ngFor = "let user of users; index as i">
+                                    <td>{{i+1}}</td>
+                                    <td> {{user.name}}</td>
+                                    <td>  {{user.email}}</td>
+                                    <td *ngIf=" !(this.selectedUser == user.id && this.isEditing); else editando">
+                                        {{user.roles.admin? "Administrador" : ""}}
+                                        {{user.roles.editor? "Editor" : ""}}
+                                        {{user.roles.collaborator? "Colaborador" : ""}}
+                                        {{user.roles.client? "Cliente" : ""}}
+                                    </td>
+                                    
+                                    <ng-template #editando>
+                                            <td>
+                                                <select name="role_text" class="custom-select" [(ngModel)] = "this.authService.selectedUser.roles.role_text">                                              >
+                                                        <option value="client">Cliente</option>
+                                                        <option value="editor">Editor</option>
+                                                        <option value="collaborator">Colaborador</option>
+                                                        <option value="admin">Administrador</option>
+                                                </select>
+                                            </td>
+                                    </ng-template>
+                                        <td *ngIf=" !(this.selectedUser == user.id && this.isEditing)  ; else editandoGuardar">                         
+                                            <button type="button" class="btn btn-primary" (click)="onPreUpdate(user)">Editar</button>
+                                        </td>
+                                    <ng-template #editandoGuardar>
+                                            <td>
+                                                    <button type="submit" class="btn btn-success" >Guardar</button>
+                                        </td>
+                                    </ng-template>
+                            </tr>
+                            </tbody>   
+                    </table>
+            </form>
+        </div>
+    </section>
+</div>

@@ -23,7 +23,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { Truncar } from './pipes/myPipes.pipe'
+import { Truncar } from './pipes/myPipes.pipe';
+import { SuperAdminComponent } from './components/admin/super-admin/super-admin.component'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { Truncar } from './pipes/myPipes.pipe'
     ProfileComponent,
     RegisterComponent,
     Page404Component,
-    Truncar    
+    Truncar,
+    SuperAdminComponent    
   ],
   imports: [
     BrowserModule,

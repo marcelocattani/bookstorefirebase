@@ -20,6 +20,9 @@
         <li class="nav-item" *ngIf="isLogged">
           <a class="nav-link" routerLink="/user/profile">Profile</a>
         </li>
+        <li class="nav-item" *ngIf="isLogged && this.isAdmin">
+          <a class="nav-link" routerLink="/admin/super-admin">Admin User</a>
+        </li>
         <li class="nav-item" *ngIf="isLogged">
           <a class="nav-link" routerLink="/admin/list-books">List Books</a>
         </li>
@@ -28,7 +31,7 @@
           </a>
         </li>
         <li class="nav-item" *ngIf="isLogged">
-          <a  class="nav-link" (click)="onLogout()" >Logout
+          <a  class="nav-link" (click)="onLogout()" routerLink="/user/login">Logout
           </a>
         </li>
       </ul>

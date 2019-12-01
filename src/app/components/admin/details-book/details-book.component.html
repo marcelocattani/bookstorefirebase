@@ -8,7 +8,7 @@
                             <p><img src="{{book.portada}}" alt="{{book.titulo}}" class="img-fluid"></p>
                             <h4 class="card-title">{{book.titulo}}</h4>
                             <p class="card-text">
-                                {{book.descripcion}}
+                                {{book.descripcion | truncador}}
                             </p>
                             <div class="container-precio-idioma">
                                 <p class="badge badge-info">

@@ -20,6 +20,9 @@ export class ListBookComponent implements OnInit {
 
   public isAdmin : any = null;
   public userUid : string = null;
+  public isColaborador : any = null;
+  public isEditor : any = null;
+  public isClient : any = null;
 
   private books : BookInterface[]; //No se debe Inicializar
 
@@ -30,14 +33,22 @@ export class ListBookComponent implements OnInit {
 
 
   public getCurrenUser() : void{
+
     this.authService.isAuth().subscribe( (data) => {
+
       if (data) {
 
         this.userUid = data.uid;
-        this.authService.isUserAdmin(this.userUid).subscribe(userRole => {
-          this.isAdmin = Object.assign({},userRole.roles);
-          this.isAdmin = this.isAdmin.hasOwnProperty('admin');
-          
+        this.authService.isUserAdmin(this.userUid).subscribe(userData => {
+
+          //this.isAdmin = Object.assign({},userRole.roles);
+          //this.isAdmin = this.isAdmin.hasOwnProperty('admin');
+            if (userData){
+              this.isAdmin = userData.roles.admin;
+              this.isColaborador = userData.roles.collaborator;
+              this.isEditor = userData.roles.editor; 
+              this.isClient = userData.roles.client;  
+            } 
         })
       }
     });

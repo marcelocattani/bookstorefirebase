@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   public isLogged : boolean = false;
   public aleatorio : String;
   public lastUpdate : Date;
+  public isAdmin : boolean = false;
 
   ngOnInit() {
     this.getCurrentUser();
@@ -30,6 +31,11 @@ export class NavbarComponent implements OnInit {
     this.authService.isAuth().subscribe((data) => {
       if(data) {       
         this.isLogged = true;
+        this.authService.isUserAdmin(data.uid).subscribe(data => {
+          if (data){
+            this.isAdmin = data.roles.admin;
+          }         
+        });
       } else {        
         this.isLogged = false;
       }
@@ -39,6 +45,7 @@ export class NavbarComponent implements OnInit {
   onLogout(){
      this.authService.logoutUser().then((data) => {       
        this.router.navigate(['/user/login']);
+       console.log("usuario cerro sesion")
      } ).catch (err => {
        alert("No se pudo cerrar Sesion correctamente"+err)
       });

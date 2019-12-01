@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
           data.updateProfile ({
             photoURL : this.inputImageUser.nativeElement.value
           }).then (function() {
-            console.log("User Update");            
+            //console.log("User Update");            
             
           }).catch ( function(err) {
             console.log("error", err)
@@ -57,7 +57,9 @@ export class RegisterComponent implements OnInit {
         }
       });     
     }).catch (err => console.log("error", err));
+
     this.redirectListBook();
+    
   }
 
   onLogin() {    
@@ -69,8 +71,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onLoginGoogle(){
-    this.authService.loginGoogleUser().then((data) => {
-      console.log("Datos de Ususario",data);
+    this.authService.loginGoogleUser().then((data) => {      
       this.redirectListBook();
     }).catch(err => console.log('error', err.message));
   }

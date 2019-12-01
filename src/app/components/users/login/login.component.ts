@@ -20,21 +20,22 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLogin() {    
-    this.authService.loginEmailUser(this.email, this.pass).then(data => {
-      this.redirectListBook();
+  onLogin() {   
+
+  this.authService.loginEmailUser(this.email, this.pass).then(data => {    
+    this.redirectListBook();
     }).catch ((err) => {
       console.log("error de logueo", err)
       this.isError = true;
       setTimeout(() =>{
         this.isError = false       
       }, 4000)
-    }); 
+    });  
+    
   }
 
   onLoginGoogle(){
-    this.authService.loginGoogleUser().then((data) => {
-      console.log("Datos de Ususario",data);
+    this.authService.loginGoogleUser().then((data) => {      
       this.redirectListBook();
     }).catch(err => console.log('error', err.message));
   }

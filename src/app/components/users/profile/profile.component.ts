@@ -18,10 +18,15 @@ export class ProfileComponent implements OnInit {
      email : '',
      photoUrl : '',
      roles : {
-       
+       admin : null, 
+       client : null, 
+       collaborator : null, 
+       editor : null, 
+       role_text : null
      }
    };
 
+   
    public providerId : string = '';
 
   ngOnInit() {
@@ -31,11 +36,14 @@ export class ProfileComponent implements OnInit {
         this.user.name = data.displayName;
         this.user.email = data.email;
         this.user.photoUrl = data.photoURL;
-        
+        this.authService.isUserAdmin(data.uid).subscribe( data => {
+          this.user.roles = data.roles;
+        });        
         //console.log("user", this.user);
 
       }
     });
   }
+
 
 }

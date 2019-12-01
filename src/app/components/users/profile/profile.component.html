@@ -2,7 +2,12 @@
     <div class="row mt-5">
       <div class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center card">
         <div class="row">
-          <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+          <div class="col-lg-12 col-sm-12 col-12 profile-header pt-5">
+            {{ user.roles.admin ? "ADMINISTRADOR" : ""}}
+            {{ user.roles.client ? "CLIENTE" : ""}}
+            {{ user.roles.editor ? "EDITOR" : ""}}
+            {{ user.roles.collaborator ? "COLABORADOR" : ""}}
+          </div>
         </div>
         <div class="row user-details">
           <div class="col-12">

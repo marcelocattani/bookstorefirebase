@@ -17,3 +17,8 @@
   .user-details h5 {
     margin: 15px 0 5px 0;
   }
+
+  .profile-header {
+    color: #fff;
+    font-size: 25px;    
+  }
