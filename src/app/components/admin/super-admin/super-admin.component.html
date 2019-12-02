@@ -4,9 +4,9 @@
                 
             <form #formUserRol  ="ngForm" (ngSubmit) ="onSave(formUserRol)">
 
-                    <input type="text" name="userId" [(ngModel)]="this.selectedUser">
-                    <input type="text" name="name" [(ngModel)] = "this.selectedName">
-                    <input type="text" name="email" [(ngModel)] = "this.selectedEmail">
+                    <input type="hidden" name="userId" [(ngModel)]="this.selectedUser">
+                    <input type="hidden" name="name" [(ngModel)] = "this.selectedName">
+                    <input type="hidden" name="email" [(ngModel)] = "this.selectedEmail">
                     
                     <table class="table table-hover">
                         <thead>

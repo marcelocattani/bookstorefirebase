@@ -131,7 +131,7 @@ export class AuthService {
 
   updateDateCompleteUser (datos) { 
     const userRef : AngularFirestoreDocument <UserInterface> = this.afs.doc('users/'+datos.userId);
-    console.log("datos recibidos", datos)
+    
 
     switch (datos.role_text) {
       case 'client' : this.roles = { client : true, role_text : 'client'};

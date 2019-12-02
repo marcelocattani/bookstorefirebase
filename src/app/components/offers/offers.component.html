@@ -11,7 +11,7 @@
                 </p>
                 <h4 routerLink="/book/{{book.id}}" class="card-title">{{book.titulo}}</h4>
                 <p class="card-text">
-                  {{book.descripcion }}
+                  {{book.descripcion | truncador}}
                 </p>
                 <div class="container-precio-idioma">
                   <p class="badge badge-info">
@@ -21,7 +21,7 @@
                     {{book.idioma}}
                   </p>
                 </div>
-                <a href="{{book.link_amazon}}" class="btn btn-block btn-primary" target="_blank">Buy</a>
+                <a href="{{book.link_amazon}}" class="btn btn-block btn-primary btn-buy" target="_blank">Buy</a>
               </div>
             </div>
           </div>
