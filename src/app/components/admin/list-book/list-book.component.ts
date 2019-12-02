@@ -29,6 +29,7 @@ export class ListBookComponent implements OnInit {
   ngOnInit() {
     this.getListBook();
     this.getCurrenUser();
+    this.authService.getCurrentUser();
   }
 
 

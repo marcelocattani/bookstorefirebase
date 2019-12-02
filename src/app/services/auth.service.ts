@@ -26,6 +26,9 @@ export class AuthService {
   public selectedUser : UserInterface;
   public roles : Roles;
 
+  public isLogged : boolean = false;
+  public isAdmin : boolean = false;
+
   
 
   registerUser(email : string, pass : string){
@@ -174,4 +177,22 @@ export class AuthService {
     }));
   }*/
 
+  getCurrentUser(){
+    return this.isAuth().subscribe((data) => {
+      if(data) {       
+        this.isLogged = true;
+        this.isUserAdmin(data.uid).subscribe(data => {
+          if (data){
+            try {
+              this.isAdmin = data.roles.admin;
+            } catch (error) {
+              console.log("Usted no es administrador");
+            }           
+          }         
+        });
+      } else {        
+        this.isLogged = false;
+      }
+    });
+  }
 }
